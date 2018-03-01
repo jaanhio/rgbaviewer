@@ -18,6 +18,7 @@ class App extends Component {
     };
     this.handleValueChange = this.handleValueChange.bind(this);
     this.handleArrowKeysInput = this.handleArrowKeysInput.bind(this);
+    this.handleOpacityChange = this.handleOpacityChange.bind(this);
   }
 
   // for using up and down arrows to adjust the values
@@ -74,9 +75,22 @@ class App extends Component {
   // for manual input of values
   handleValueChange = e => {
     e.stopPropagation();
+    const re = /^[0-9\b]+$/;
     let { id, value } = e.target;
-    value = value > 255 ? 255 : value;
-    this.setState({ [id]: Number(value) });
+    if(value === '' || re.test(value)){
+      value = value > 255 ? 255 : value;
+      this.setState({ [id]: Number(value) });  
+    }
+  }
+
+  handleOpacityChange = e => {
+    e.stopPropagation();
+    const re = /^[0-9\b]+$/;
+    let { id, value } = e.target;
+    if (value === '' || re.test(value)) {
+      value = value > 1 ? 1 : value;
+      this.setState({ [id]: Number(value) });
+    }
   }
 
   render () {
@@ -119,26 +133,15 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div className="App" style={appStyle}>
-          {/*<header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-      </header>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-      </p>*/}
           <span>rgba(</span>
           <form style={formStyle}>
-             {/*<input value={this.state.red} type="text" id="red" onChange={this.handleValueChange} onKeyDown={this.handleArrowKeysInput}/>
-              <input value={this.state.green} type="text" id="green" onChange={this.handleValueChange} onKeyDown={this.handleArrowKeysInput}/>
-              <input value={this.state.blue} type="text" id="blue" onChange={this.handleValueChange} onKeyDown={this.handleArrowKeysInput}/>
-          <input value={this.state.opacity} type="text" id="opacity" onChange={this.handleValueChange} onKeyDown={this.handleArrowKeysInput}/>*/}
               <TextField value={this.state.red} type="text" id="red" onChange={this.handleValueChange} onKeyDown={this.handleArrowKeysInput} style={textBoxStyle} inputStyle={textFieldStyle} underlineStyle={underLineStyle}/>
               <span>,</span>
               <TextField value={this.state.green} type="text" id="green" onChange={this.handleValueChange} onKeyDown={this.handleArrowKeysInput} style={textBoxStyle} inputStyle={textFieldStyle} underlineStyle={underLineStyle}/>
               <span>,</span>
               <TextField value={this.state.blue} type="text" id="blue" onChange={this.handleValueChange} onKeyDown={this.handleArrowKeysInput} style={textBoxStyle} inputStyle={textFieldStyle} underlineStyle={underLineStyle}/>
               <span>,</span>
-              <TextField value={this.state.opacity} type="text" id="opacity" onChange={this.handleValueChange} onKeyDown={this.handleArrowKeysInput} style={textBoxStyle} inputStyle={textFieldStyle} underlineStyle={underLineStyle}/>
+              <TextField value={this.state.opacity} type="text" id="opacity" onChange={this.handleOpacityChange} onKeyDown={this.handleArrowKeysInput} style={textBoxStyle} inputStyle={textFieldStyle} underlineStyle={underLineStyle}/>
           </form>
           <span>)</span>
         </div>
