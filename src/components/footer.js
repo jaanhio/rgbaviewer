@@ -30,11 +30,12 @@ class Footer extends Component {
 			width: '2em',
 			position: 'relative',
 			bottom: 50,
+			cursor: 'pointer',
 		};
 
 		return (
 				<div style={footerDivStyle}>
-						<FontIcon className="fab fa-github" style={logoStyle} />
+					<a href="https://github.com/jaanhio/rgbaviewer" target="_blank"><FontIcon className="fab fa-github" style={logoStyle}/></a>
 				</div>
 		)
 	}

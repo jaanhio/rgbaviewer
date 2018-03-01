@@ -1,3 +1,16 @@
+## RGBA viewer
+
+I built this to familiarize myself with React (passing of props, lifecycle methods etc) and styling using Material-ui components.
+
+Try it yourself!
+
+1. Fork/clone this repo.
+2. Navigate to top folder.
+3. Install required modules `yarn` or `npm install`.
+4. To start app, `yarn run start` or `npm run start`.
+
+---
+ 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
